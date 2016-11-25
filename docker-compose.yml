@@ -1,0 +1,14 @@
+car:
+  build: .
+  volumes:
+    - .:/work/car/traffic-signs
+    - nvidia_driver_367.44:/usr/local/nvidia:ro
+  environment:
+    JOBLIB_TEMP_FOLDER: /tmp
+  ports:
+    - "8889:8888"
+  devices:
+  - /dev/nvidia0
+  - /dev/nvidiactl
+  - /dev/nvidia-uvm
+  command: /work/car/traffic-signs/traffic-signs.sh
